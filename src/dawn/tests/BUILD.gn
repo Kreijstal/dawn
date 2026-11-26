@@ -746,9 +746,9 @@ source_set("end2end_tests_sources") {
 
   if (dawn_enable_d3d11 || dawn_enable_d3d12) {
     libs += [
-      "d3d11.lib",
+      "d3d11",
       "d3d12.lib",
-      "dxgi.lib",
+      "dxgi",
     ]
 
     sources += [ "end2end/VideoViewsTests_win.cpp" ]

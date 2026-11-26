@@ -495,7 +495,7 @@ source_set("sources") {
     # So we only link to it in debug build when compiling for UWP.
     # In win32 we load dxgi.dll using LoadLibrary
     # so no need for static linking.
-    libs += [ "dxgi.lib" ]
+    libs += [ "dxgi" ]
   }
 
   # TODO(dawn:766):
