@@ -27,6 +27,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
+import shutil
 import subprocess
 import sys
 
@@ -44,6 +45,9 @@ def main() -> int:
                              cipd_deps.get_cipd_platform(), 'bin', 'go')
     if sys.platform == 'win32':
         go_binary += '.exe'
+    # No CIPD Go in release tarballs; use the one on PATH.
+    if not os.path.exists(go_binary) and shutil.which('go'):
+        go_binary = shutil.which('go')
 
     tool_dir = os.path.relpath(os.path.join(CMD_DIR, 'gen', 'sources'),
                                DAWN_ROOT)
